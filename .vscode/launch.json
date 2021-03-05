@@ -24,6 +24,25 @@
             ]
         },
         {
+            "name": "C++: tutorial_02",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/tutorial_02",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/bin",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": false
+                }
+            ]
+        },
+        {
             "name": "C++: axpy",
             "type": "cppdbg",
             "request": "launch",
