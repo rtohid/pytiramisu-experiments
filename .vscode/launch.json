@@ -1,0 +1,60 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C++: tutorial_01",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/tutorial_01",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/bin",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": false
+                }
+            ]
+        },
+        {
+            "name": "C++: axpy",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/axpy",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/bin",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": false
+                }
+            ]
+        },
+        {
+            "name": "PYTHON: tutorial_01",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/tutorials/tutorial_01.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "PYTHON: axpy",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/linalg/axpy.py",
+            "console": "integratedTerminal"
+        }
+    ]
+}
