@@ -27,22 +27,22 @@ a = computation("{a[0]}", expr(), False, p_float32, f)
 result = computation("[N]->{result[i]: 0<=i<N}",
                      a(i) * x(i) + y(i), True, p_float32, f)
 
-buf_a = buffer("buf_a", list([expr(1)]), p_float32, a_input, f)
-buf_x = buffer("buf_x", list([expr(10)]), p_float32, a_input, f)
-buf_y = buffer("buf_y", list([expr(10)]), p_float32, a_output, f)
+buf_a = buffer("buf_a", [expr(1)], p_float32, a_input, f)
+buf_x = buffer("buf_x", [expr(10)], p_float32, a_input, f)
+buf_y = buffer("buf_y", [expr(10)], p_float32, a_output, f)
 
 a.set_access("{a[0]->buf_a[0]}")
 x.set_access("[N]->{x[i]->buf_x[i]: 0<=i<N}")
 y.set_access("[N]->{y[i]->buf_y[i]: 0<=i<N}")
 result.set_access("[N]->{result[i]->buf_y[i]: 0<=i<N}")
 
-f.set_arguments(list([buf_a, buf_x, buf_y]))
+f.set_arguments([buf_a, buf_x, buf_y])
 f.gen_time_space_domain()
-physl_computations = codegen_physl(list([buf_a, buf_x, buf_y]))
+# physl_computations = codegen_physl([buf_a, buf_x, buf_y])
 
-for computation in physl_computations:
-    if len(computation['iterators']) < 1:
-        print("computation is an input variable")
-    for k, v in computation.items():
-        print(k, v)
-    print()
+# for computation in physl_computations:
+#     if len(computation['iterators']) < 1:
+#         print("computation is an input variable")
+#     for k, v in computation.items():
+#         print(k, v)
+#     print()
