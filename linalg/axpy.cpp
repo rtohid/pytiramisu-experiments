@@ -7,7 +7,7 @@
 
 #include <tiramisu/debug.h>
 #include <tiramisu/core.h>
-// #include <tiramisu/tiramisu.h>
+#include <tiramisu/tiramisu.h>
 #include "physl_tiramisu.hpp"
 
 
@@ -79,7 +79,9 @@ void generate_function(std::string name, int size)
     args.emplace_back(buf_x);
     args.emplace_back(buf_y);
 
-    physl::tiramisu::codegen(args);
+    // physl::codegen::generate_physl({&buf_a, &buf_x, &buf_y});
+    function0.codegen({&buf_a, &buf_x, &buf_y}, "hello.o");
+    
     
     // function0.gen_halide_stmt();
     // function0.gen_halide_obj("generated_" + std::string(TEST_NAME_STR) + ".o");

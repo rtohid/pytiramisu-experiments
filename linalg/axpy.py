@@ -9,7 +9,6 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 from pytiramisu import a_input, a_output, argument_t, buffer, codegen_physl
 from pytiramisu import computation, constant, expr, function, init_physl
 from pytiramisu import p_uint8, p_int32, p_float32, primitive_t, var
-
 """
 Implementation of axpy in PyTIramisu 
 https://github.com/Tiramisu-Compiler/tiramisu/blob/a9972a21e2b966f7d3719c583c04dfc2112e3fe5/benchmarks/linear_algebra/blas/level1/axpy/
@@ -38,11 +37,4 @@ result.set_access("[N]->{result[i]->buf_y[i]: 0<=i<N}")
 
 f.set_arguments([buf_a, buf_x, buf_y])
 f.gen_time_space_domain()
-# physl_computations = codegen_physl([buf_a, buf_x, buf_y])
-
-# for computation in physl_computations:
-#     if len(computation['iterators']) < 1:
-#         print("computation is an input variable")
-#     for k, v in computation.items():
-#         print(k, v)
-#     print()
+f.codegen([buf_a, buf_x, buf_y])
