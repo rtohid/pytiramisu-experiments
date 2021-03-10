@@ -10,20 +10,13 @@ from pytiramisu import buffer, computation, codegen_physl, p_uint8, a_output
 
 init_physl("function0")
 i = var("i", expr(0), expr(10))
-S0 = computation("S0", list([
-    i,
-]),
-                 expr(3) + expr(4))
+S0 = computation("S0", [i], expr(3) + expr(4))
 S0.parallelize(i)
-buf0 = buffer("buf0", list([
-    expr(10),
-]), p_uint8, a_output)
+buf0 = buffer("buf0", [expr(10)], p_uint8, a_output)
 S0.store_in(buf0)
 
-physl_computations = codegen_physl([
-    buf0,
-])
-#for computation in filter(lambda x: len(x) > 0, physl_computations):
+physl_computations = codegen_physl([buf0])
+
 for computation in physl_computations:
     if len(computation['iterators']) < 1:
         print("computation is an input variable")

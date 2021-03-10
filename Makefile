@@ -48,6 +48,10 @@ tutorial_02: physl_isl.o physl_tiramisu.o $(TUTORIAL_DIR)/tutorial_02.cpp
 	mkdir -p $(BIN_DIR)
 	$(CXX) $(CXX_FLAGS_APP) $(OBJ_DIR)/physl_isl.o $(OBJ_DIR)/physl_tiramisu.o $(TUTORIAL_DIR)/tutorial_02.cpp -o $(BIN_DIR)/tutorial_02 $(LIBS)
 
+tutorial_05: physl_isl.o physl_tiramisu.o $(TUTORIAL_DIR)/tutorial_05.cpp
+	mkdir -p $(BIN_DIR)
+	$(CXX) $(CXX_FLAGS_APP) $(OBJ_DIR)/physl_isl.o $(OBJ_DIR)/physl_tiramisu.o $(TUTORIAL_DIR)/tutorial_05.cpp -o $(BIN_DIR)/tutorial_05 $(LIBS)
+
 axpy: physl_isl.o physl_tiramisu.o $(LINALG_DIR)/axpy.cpp
 
 	mkdir -p $(BIN_DIR)
