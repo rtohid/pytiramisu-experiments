@@ -74,11 +74,6 @@ void generate_function(std::string name, int size)
     function0.gen_time_space_domain();
     function0.gen_isl_ast();
 
-    std::vector<tiramisu::buffer> args;
-    args.emplace_back(buf_a);
-    args.emplace_back(buf_x);
-    args.emplace_back(buf_y);
-
     // physl::codegen::generate_physl({&buf_a, &buf_x, &buf_y});
     function0.codegen({&buf_a, &buf_x, &buf_y}, "hello.o");
     
