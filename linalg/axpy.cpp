@@ -10,7 +10,6 @@
 #include <tiramisu/tiramisu.h>
 #include "physl_tiramisu.hpp"
 
-
 #include <string.h>
 
 using namespace tiramisu;
@@ -28,8 +27,8 @@ void generate_function(std::string name, int size)
     // Layer I
     // -------------------------------------------------------
 
-    tiramisu::function function0(name);
-    tiramisu::constant N("N", tiramisu::expr((int32_t) size), p_int32, true, NULL, 0, &function0);
+    physl::tiramisu::PhyslFunction function0(name);
+    tiramisu::constant N("N", tiramisu::expr((int32_t)size), p_int32, true, NULL, 0, &function0);
     tiramisu::var i("i");
     tiramisu::var j("j");
     tiramisu::computation x("[N]->{x[i]: 0<=i<N}", tiramisu::expr(), false, p_float32, &function0);
@@ -75,9 +74,18 @@ void generate_function(std::string name, int size)
     function0.gen_isl_ast();
 
     // physl::codegen::generate_physl({&buf_a, &buf_x, &buf_y});
-    function0.codegen({&buf_a, &buf_x, &buf_y}, "hello.o");
-    
-    
+    std::vector<tiramisu::buffer *> buff{&buf_a, &buf_x, &buf_y};
+    auto generated_code = function0.generate_code(buff);
+
+    for (auto g : generated_code)
+    {
+        for (auto c : g)
+        {
+            // std::cout << c.first << std::endl;
+            std::cout << c.second << std::endl;
+        }
+    }
+
     // function0.gen_halide_stmt();
     // function0.gen_halide_obj("generated_" + std::string(TEST_NAME_STR) + ".o");
 }
