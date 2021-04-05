@@ -54,10 +54,10 @@ TUTORIAL_DIR=$(APPS_ROOT_DIR)/tutorials
 
 physl_isl.o: $(PHYFLOW_ROOT_DIR)/physl_isl.cpp
 	mkdir -p $(OBJ_DIR)
-	$(CXX) -O3 -std=c++17 -fPIC $(INC_FLAGS) -c $(PHYFLOW_ROOT_DIR)/physl_isl.cpp -o $(OBJ_DIR)/physl_isl.o
+	$(CXX) $(CXX_FLAGS) -O3 -std=c++17 -fPIC $(INC_FLAGS) -c $(PHYFLOW_ROOT_DIR)/physl_isl.cpp -o $(OBJ_DIR)/physl_isl.o
 
 physl_tiramisu.o: physl_isl.o $(PHYFLOW_ROOT_DIR)/physl_tiramisu.cpp
-	$(CXX) -O3 -std=c++17 -fPIC $(INC_FLAGS) -c $(PHYFLOW_ROOT_DIR)/physl_tiramisu.cpp -o $(OBJ_DIR)/physl_tiramisu.o
+	$(CXX) $(CXX_FLAGS) -O3 -std=c++17 -fPIC $(INC_FLAGS) -c $(PHYFLOW_ROOT_DIR)/physl_tiramisu.cpp -o $(OBJ_DIR)/physl_tiramisu.o
 
 tutorial_01: physl_isl.o physl_tiramisu.o $(TUTORIAL_DIR)/tutorial_01.cpp
 	mkdir -p $(BIN_DIR)
@@ -87,5 +87,5 @@ tutorial_01.py: $(TUTORIAL_DIR)/tutorial_01.py
 	python3.8 $(TUTORIAL_DIR)/tutorial_01.py
  
 clean:
-	rm -r $(OBJ_DIR)
-	rm -r $(BIN_DIR)
+	rm -rf $(OBJ_DIR)
+	rm -rf $(BIN_DIR)
