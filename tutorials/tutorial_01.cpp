@@ -5,9 +5,9 @@
 #include <isl/union_map.h>
 #include <isl/union_set.h>
 
-#include "physl_tiramisu.hpp"
 #include <tiramisu/core.h>
 #include <tiramisu/debug.h>
+#include "physl_tiramisu.hpp"
 
 /**
 
@@ -23,7 +23,8 @@
 
 using namespace tiramisu;
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     tiramisu::init("function0");
 
     var i("i", 0, 10);

@@ -18,7 +18,8 @@ using namespace tiramisu;
  *     y = a*x + y
  */
 
-void generate_function(std::string name, int size) {
+void generate_function(std::string name, int size)
+{
     tiramisu::global::set_default_tiramisu_options();
 
     // -------------------------------------------------------
@@ -26,29 +27,29 @@ void generate_function(std::string name, int size) {
     // -------------------------------------------------------
 
     tiramisu::function function0(name);
-    tiramisu::constant N("N", tiramisu::expr((int32_t)size), p_int32, true,
-                         NULL, 0, &function0);
+    tiramisu::constant N("N", tiramisu::expr((int32_t) size), p_int32, true,
+        NULL, 0, &function0);
     tiramisu::var i("i");
     tiramisu::var j("j");
-    tiramisu::computation x("[N]->{x[i]: 0<=i<N}", tiramisu::expr(), false,
-                            p_float32, &function0);
-    tiramisu::computation y("[N]->{y[i]: 0<=i<N}", tiramisu::expr(), false,
-                            p_float32, &function0);
-    tiramisu::computation a("{a[0]}", tiramisu::expr(), false, p_float32,
-                            &function0);
+    tiramisu::computation x(
+        "[N]->{x[i]: 0<=i<N}", tiramisu::expr(), false, p_float32, &function0);
+    tiramisu::computation y(
+        "[N]->{y[i]: 0<=i<N}", tiramisu::expr(), false, p_float32, &function0);
+    tiramisu::computation a(
+        "{a[0]}", tiramisu::expr(), false, p_float32, &function0);
     tiramisu::computation result("[N]->{result[i]: 0<=i<N}", a(0) * x(i) + y(i),
-                                 true, p_float32, &function0);
+        true, p_float32, &function0);
 
     // -------------------------------------------------------
     // Layer III
     // -------------------------------------------------------
 
-    tiramisu::buffer buf_a("buf_a", {1}, tiramisu::p_float32, a_input,
-                           &function0);
-    tiramisu::buffer buf_x("buf_x", {10}, tiramisu::p_float32, a_input,
-                           &function0);
-    tiramisu::buffer buf_y("buf_y", {10}, tiramisu::p_float32, a_output,
-                           &function0);
+    tiramisu::buffer buf_a(
+        "buf_a", {1}, tiramisu::p_float32, a_input, &function0);
+    tiramisu::buffer buf_x(
+        "buf_x", {10}, tiramisu::p_float32, a_input, &function0);
+    tiramisu::buffer buf_y(
+        "buf_y", {10}, tiramisu::p_float32, a_output, &function0);
 
     a.set_access("{a[0]->buf_a[0]}");
     x.set_access("[N]->{x[i]->buf_x[i]: 0<=i<N}");
@@ -71,7 +72,8 @@ void generate_function(std::string name, int size) {
     // ".o");
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     generate_function("tiramisu_generated_code", 20);
     std::cout << "DONEd" << std::endl;
 
