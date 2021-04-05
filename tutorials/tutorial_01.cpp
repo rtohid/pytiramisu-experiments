@@ -1,13 +1,13 @@
-#include <isl/set.h>
-#include <isl/union_map.h>
-#include <isl/union_set.h>
 #include <isl/ast_build.h>
 #include <isl/schedule.h>
 #include <isl/schedule_node.h>
+#include <isl/set.h>
+#include <isl/union_map.h>
+#include <isl/union_set.h>
 
-#include <tiramisu/debug.h>
-#include <tiramisu/core.h>
 #include "physl_tiramisu.hpp"
+#include <tiramisu/core.h>
+#include <tiramisu/debug.h>
 
 /**
 
@@ -23,8 +23,7 @@
 
 using namespace tiramisu;
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     tiramisu::init("function0");
 
     var i("i", 0, 10);
