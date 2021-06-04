@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.13)
+project(hpx_tiramisu CXX)
+find_package(HPX REQUIRED)
+add_executable(tutorial_01_hpx tutorial_01_hpx.cpp)
+target_link_libraries(tutorial_01_hpx HPX::hpx HPX::wrap_main HPX::iostreams_component)

@@ -3,7 +3,7 @@
         {
             "name": "Linux",
             "includePath": [
-                "/home/stellar/git/phyflow/backend",
+                "/home/stellar/install/hpx/Debug/include",
                 "/home/stellar/git/tiramisu/include/**",
                 "/home/stellar/git/tiramisu/3rdParty/isl/**",
                 "${workspaceFolder}/**"
