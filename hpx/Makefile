@@ -34,15 +34,8 @@ tutorial_01:
 		-ltiramisu -lisl -lHalide -ldl -lpthread -lz -lm
 
 	./developers_tutorial_01_fct_generator
-	
-	g++ -std=c++11 -fno-rtti \
-		-I${TIRAMISU_ROOT}/include -I${TIRAMISU_ROOT}/3rdParty/Halide/include \
-		-L${TIRAMISU_ROOT}/build -L${TIRAMISU_ROOT}/3rdParty/Halide/lib/ \
-		-o build/wrapper_tutorial_01 \
-		-Wl,-rpath,${TIRAMISU_ROOT}/build wrapper_tutorial_01.cpp \
-		build/generated_fct_developers_tutorial_01.o \
-		-ltiramisu -lHalide -ldl -lpthread -lz -lm
 
 clean:
 	rm -f developers_tutorial_01_fct_generator
 	rm -rf build
+

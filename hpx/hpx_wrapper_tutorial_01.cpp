@@ -1,13 +1,16 @@
-#include "Halide.h"
-#include "wrapper_tutorial_01.h"
-#include "tiramisu/utils.h"
-#include <cstdlib>
-#include <iostream>
-#include <future>         // std::async, std::future
-#include <chrono>         // std::chrono::milliseconds
+#include <hpx/hpx_main.hpp>
+#include <hpx/iostream.hpp>
+#include <hpx/hpx_init.hpp>
+#include <hpx/include/lcos.hpp>
+#include <hpx/include/util.hpp>
 
-int main(int, char**)
+#include "wrapper_tutorial_01.h"
+
+int main()
 {
+    // Say hello to the world!
+    hpx::cout << "Hello World!\n" << hpx::flush;
+
     int N = 1000000;
 
     Halide::Buffer<int32_t> output(N);
